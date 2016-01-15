@@ -202,12 +202,27 @@ function _respond( res, survey ) {
     delete survey.credentials;
 
     res.status( 200 );
+    var branding = {};
+
+    if (survey.info && survey.info.customLogo) {
+      branding.source =  survey.info.customLogo
+    }
+
+    if (survey.info && survey.info.customMessage) {
+      branding.customMessage =  survey.info.customMessage;
+    }
+
+    if (!branding.source && !branding.customMessage) {
+      branding = null;
+    }
+
     res.send( {
         form: survey.form,
         // previously this was JSON.stringified, not sure why
         model: survey.model,
         theme: survey.theme,
-        branding: survey.account.branding,
+        info: survey.info,
+        branding: survey.account.branding || branding,
         // The hash components are converted to deal with a node_redis limitation with storing and retrieving null.
         // If a form contains no media this hash is null, which would be an empty string upon first load.
         // Subsequent cache checks will however get the string value 'null' causing the form cache to be unnecessarily refreshed

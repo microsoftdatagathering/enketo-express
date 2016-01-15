@@ -48,6 +48,8 @@ function getSurvey( survey ) {
                     survey.formHash = cacheObj.formHash;
                     survey.mediaUrlHash = cacheObj.mediaUrlHash;
                     survey.xslHash = cacheObj.xslHash;
+                    survey.info = JSON.parse(cacheObj.info);
+
                     resolve( survey );
                 }
             } );
@@ -166,9 +168,9 @@ function setSurvey( survey ) {
                 mediaUrlHash: survey.mediaUrlHash,
                 xslHash: survey.xslHash,
                 form: survey.form,
-                model: survey.model
+                model: survey.model,
+                info: JSON.stringify(survey.info)
             };
-
             key = _getKey( survey );
 
             client.hmset( key, obj, function( error ) {
@@ -260,11 +262,8 @@ function _getKey( survey ) {
  * @param {[type]} survey [description]
  */
 function _addHashes( survey ) {
-    survey.formHash = survey.formHash || survey.info.hash;
-    // The mediaUrlHash is generated from the downloadUrls in the manifest. This is used for the server cache
-    // which only needs updating if URLs change. It should never update when only the media content changes. 
-    // This allows using dynamic externa data with user-specific content.
-    survey.mediaUrlHash = survey.mediaUrlHash || utils.getXformsManifestHash( survey.manifest, 'downloadUrl' );
+    survey.formHash = survey.formHash || utils.md5( JSON.stringify( survey.info ) );
+    survey.mediaHash = survey.mediaHash || ( ( survey.manifest && survey.manifest.length > 0 ) ? utils.md5( JSON.stringify( survey.manifest ) ) : null );
     survey.xslHash = survey.xslHash || transformer.version;
 }
 
