@@ -135,6 +135,10 @@ function _addBranding( survey ) {
     }
     $brandImg.removeClass( 'hide' );
 
+    if ( survey.branding && survey.branding.customMessage) {
+        settings.customThankYouMessage = survey.branding.customMessage;
+    }
+
     return survey;
 }
 

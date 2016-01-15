@@ -375,11 +375,11 @@ function _saveRecord( recordName, confirmed, errorMsg ) {
             if ( draft ) {
                 gui.feedback( t( 'alert.recordsavesuccess.draftmsg' ), 3 );
             } else {
-                gui.feedback( t( 'alert.recordsavesuccess.finalmsg' ), 3 );
+                gui.feedback( settings.customThankYouMessage || t( 'alert.recordsavesuccess.finalmsg' ), 10 );
                 // The timeout simply avoids showing two messages at the same time:
                 // 1. "added to queue"
                 // 2. "successfully submitted"
-                setTimeout( records.uploadQueue, 5 * 1000 );
+                setTimeout( records.uploadQueue, 10 * 1000 );
             }
         } )
         .catch( function( error ) {
