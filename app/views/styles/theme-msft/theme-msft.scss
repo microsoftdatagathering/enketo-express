@@ -1,0 +1,102 @@
+// fonts
+@import "./relative-fonts";
+
+// variables, in the right order
+@import "variables";
+@import "../../../../node_modules/enketo-core/src/sass/formhub/variables";
+@import "../../../../node_modules/enketo-core/src/sass/core/variables";
+
+// mixins, in the right order
+@import "../../../../node_modules/enketo-core/src/sass/core/mixins";
+@import "../../../../node_modules/enketo-core/src/sass/formhub/mixins";
+@import "../component/mixins";
+
+// reset
+@import "../../../../node_modules/enketo-core/src/sass/core/reset";
+
+// common styles
+@import "../component/common";
+
+// utilities
+@import "../../../../node_modules/enketo-core/src/sass/core/utilities";
+
+// icons
+@import "../component/icons";
+
+// buttons
+@import "../component/buttons";
+
+// layout
+@import "../../../../node_modules/enketo-core/src/sass/core/layout";
+@import "../../../../node_modules/enketo-core/src/sass/core/pages";
+
+// components
+@import "../component/side-slider";
+@import "../theme-formhub/form_formhub";
+@import "../component/form_header";
+@import "../component/form_footer";
+
+.form-progress {
+    background-color: $brand-primary-color;
+}
+
+.offline-enabled {
+    .offline-enabled__icon {
+        background-color: $brand-primary-color;
+        color: white;
+
+        &:after {
+            content: "";
+            font-family: 'FontAwesome';
+        }
+
+        line-height: 30px;
+        text-align: center;
+        background-image: none;
+        font-size: 25px;
+        opacity: 1;
+        @include transition-slow(opacity, 3s);
+        &.not-enabled {
+            height: 0;
+            opacity: 0;
+            width: 0;
+            background: none;
+        }
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .offline-enabled__queue-length {
+        color: $brand-primary-color;
+    }
+}
+
+/* IE11 magic */
+.main {
+    display: block;
+    .paper form {
+        flex: auto;
+    }
+}
+
+/* BIG LOGOS */
+.main {
+    padding-top: 150px;
+    .branding img {
+        max-height: 100px;
+        max-width: 650px;
+    }
+    header {
+        top: -150px;
+    }
+}
+
+/* Blue loader */
+.form__loader {
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIiB3aWR0aD0iMTEwcHgiIGhlaWdodD0iMTEwcHgiPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDUgNSkiIGZpbGw9IiMzZTc1YTYiPgogICAgPGNpcmNsZSBjeD0iNTAiIGN5PSIwIiByPSI1IiBzdHlsZT0ib3BhY2l0eTowLjMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVUeXBlPSJDU1MiIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwLjMiIGR1cj0iMS4ycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwcyIgLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iNzUiIGN5PSI2LjY5ODcyOTgiIHI9IjUiIHN0eWxlPSJvcGFjaXR5OjAuMyI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZVR5cGU9IkNTUyIgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZnJvbT0iMSIgdG89IjAuMyIgZHVyPSIxLjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgYmVnaW49IjAuMXMiIC8+CiAgICA8L2NpcmNsZT4KICAgIDxjaXJjbGUgY3g9IjkzLjMwMTI3MDIiIGN5PSIyNSIgcj0iNSIgc3R5bGU9Im9wYWNpdHk6MC4zIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlVHlwZT0iQ1NTIiBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMC4zIiBkdXI9IjEuMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC4ycyIgLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iNTAiIHI9IjUiIHN0eWxlPSJvcGFjaXR5OjAuMyI+CiAgICAgIDxhbmltYXRlIGF0dHJpYnV0ZVR5cGU9IkNTUyIgYXR0cmlidXRlTmFtZT0ib3BhY2l0eSIgZnJvbT0iMSIgdG89IjAuMyIgZHVyPSIxLjJzIiByZXBlYXRDb3VudD0iaW5kZWZpbml0ZSIgYmVnaW49IjAuM3MiIC8+CiAgICA8L2NpcmNsZT4KICAgIDxjaXJjbGUgY3g9IjkzLjMwMTI3MDIiIGN5PSI3NSIgcj0iNSIgc3R5bGU9Im9wYWNpdHk6MC4zIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlVHlwZT0iQ1NTIiBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMC4zIiBkdXI9IjEuMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC40cyIgLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iNzUiIGN5PSI5My4zMDEyNzAyIiByPSI1IiBzdHlsZT0ib3BhY2l0eTowLjMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVUeXBlPSJDU1MiIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwLjMiIGR1cj0iMS4ycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwLjVzIiAvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjEwMCIgcj0iNSIgc3R5bGU9Im9wYWNpdHk6MC4zIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlVHlwZT0iQ1NTIiBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMC4zIiBkdXI9IjEuMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC42cyIgLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMjUiIGN5PSI5My4zMDEyNzAyIiByPSI1IiBzdHlsZT0ib3BhY2l0eTowLjMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVUeXBlPSJDU1MiIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwLjMiIGR1cj0iMS4ycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwLjdzIiAvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSI2LjY5ODcyOTgiIGN5PSI3NSIgcj0iNSIgc3R5bGU9Im9wYWNpdHk6MC4zIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlVHlwZT0iQ1NTIiBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMC4zIiBkdXI9IjEuMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMC44cyIgLz4KICAgIDwvY2lyY2xlPgogICAgPGNpcmNsZSBjeD0iMCIgY3k9IjUwIiByPSI1IiBzdHlsZT0ib3BhY2l0eTowLjMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVUeXBlPSJDU1MiIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwLjMiIGR1cj0iMS4ycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIwLjlzIiAvPgogICAgPC9jaXJjbGU+CiAgICA8Y2lyY2xlIGN4PSI2LjY5ODcyOTgiIGN5PSIyNSIgcj0iNSIgc3R5bGU9Im9wYWNpdHk6MC4zIj4KICAgICAgPGFuaW1hdGUgYXR0cmlidXRlVHlwZT0iQ1NTIiBhdHRyaWJ1dGVOYW1lPSJvcGFjaXR5IiBmcm9tPSIxIiB0bz0iMC4zIiBkdXI9IjEuMnMiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIiBiZWdpbj0iMXMiIC8+CiAgICA8L2NpcmNsZT4KICAgIDxjaXJjbGUgY3g9IjI1IiBjeT0iNi42OTg3Mjk4IiByPSI1IiBzdHlsZT0ib3BhY2l0eTowLjMiPgogICAgICA8YW5pbWF0ZSBhdHRyaWJ1dGVUeXBlPSJDU1MiIGF0dHJpYnV0ZU5hbWU9Im9wYWNpdHkiIGZyb209IjEiIHRvPSIwLjMiIGR1cj0iMS4ycyIgcmVwZWF0Q291bnQ9ImluZGVmaW5pdGUiIGJlZ2luPSIxLjFzIiAvPgogICAgPC9jaXJjbGU+CiAgPC9nPgo8L3N2Zz4K);
+}
+
+.enketo-power {
+    display: none;
+}
+
