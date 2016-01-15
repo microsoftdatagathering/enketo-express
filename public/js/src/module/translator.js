@@ -22,7 +22,7 @@ htmlParagraphsPostProcessor = {
 
 /**
  * Initializes translator and resolves **when translations have been loaded**.
- * 
+ *
  * @param  {=*?} something can be anything
  * @return {Promise}       promise resolving the original something argument
  */
@@ -37,7 +37,7 @@ init = function( something ) {
                 fallbackLng: 'en',
                 joinArrays: '\n',
                 backend: {
-                    loadPath: settings.basePath + '/locales/__lng__/translation.json',
+                    loadPath: settings.basePath + '../locales/__lng__/translation.json',
                 },
                 detection: {
                     order: [ 'querystring', 'navigator' ],
@@ -66,7 +66,7 @@ t = function( key, options ) {
 /**
  * Localizes the descendents of an element based on the data-i18n attribute.
  * Performance-optimized in Chrome (used bench6 form).
- * 
+ *
  * @param  {Element} Element [description]
  */
 localize = function( element ) {
