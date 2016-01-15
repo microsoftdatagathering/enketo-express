@@ -48,6 +48,8 @@ function getSurvey( survey ) {
                     survey.formHash = cacheObj.formHash;
                     survey.mediaHash = cacheObj.mediaHash;
                     survey.xslHash = cacheObj.xslHash;
+                    survey.info = JSON.parse(cacheObj.info);
+
                     resolve( survey );
                 }
             } );
@@ -163,9 +165,9 @@ function setSurvey( survey ) {
                 mediaHash: survey.mediaHash,
                 xslHash: survey.xslHash,
                 form: survey.form,
-                model: survey.model
+                model: survey.model,
+                info: JSON.stringify(survey.info)
             };
-
             key = _getKey( survey );
 
             client.hmset( key, obj, function( error ) {
@@ -256,7 +258,7 @@ function _getKey( survey ) {
  * @param {[type]} survey [description]
  */
 function _addHashes( survey ) {
-    survey.formHash = survey.formHash || survey.info.hash;
+    survey.formHash = survey.formHash || utils.md5( JSON.stringify( survey.info ) );
     survey.mediaHash = survey.mediaHash || ( ( survey.manifest && survey.manifest.length > 0 ) ? utils.md5( JSON.stringify( survey.manifest ) ) : null );
     survey.xslHash = survey.xslHash || transformer.version;
 }
