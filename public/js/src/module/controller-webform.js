@@ -7,7 +7,7 @@
 var gui = require( './gui' );
 var connection = require( './connection' );
 var settings = require( './settings' );
-var Form = require( 'enketo-core' );
+var Form = require( './overrides/Form' );
 var fileManager = require( './file-manager' );
 var t = require( './translator' ).t;
 var records = require( './records-queue' );
