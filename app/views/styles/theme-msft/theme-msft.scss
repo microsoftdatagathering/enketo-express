@@ -100,3 +100,6 @@
     display: none;
 }
 
+input[readonly] {
+    display: none !important;
+}
