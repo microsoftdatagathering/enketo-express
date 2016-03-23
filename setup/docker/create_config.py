@@ -39,7 +39,7 @@ def create_config():
 
     base_path= os.environ.get('ENKETO_BASE_PATH')
     if base_path:
-        config['base_path']= base_path
+        config['base path']= base_path
 
     config['linked form and data server']= dict()
     config['linked form and data server']['api key']= os.environ['ENKETO_API_KEY']
