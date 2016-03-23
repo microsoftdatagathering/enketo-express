@@ -37,6 +37,10 @@ def create_config():
     if offline_enabled:
         config['offline enabled']= 'True'
 
+    base_path= os.environ.get('ENKETO_BASE_PATH')
+    if base_path:
+        config['base_path']= base_path
+
     config['linked form and data server']= dict()
     config['linked form and data server']['api key']= os.environ['ENKETO_API_KEY']
     config['linked form and data server']['server url']= os.environ.get('ENKETO_FORM_DATA_SERVER_URL', 'kobocat')
