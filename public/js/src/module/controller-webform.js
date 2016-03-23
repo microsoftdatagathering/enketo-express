@@ -353,11 +353,11 @@ function _saveRecord( recordName, confirmed, errorMsg ) {
             if ( draft ) {
                 gui.feedback( t( 'alert.recordsavesuccess.draftmsg' ), 3 );
             } else {
-                gui.feedback( settings.customThankYouMessage || t( 'alert.recordsavesuccess.finalmsg' ), 10 );
+                gui.feedback( settings.customThankYouMessage || t( 'alert.recordsavesuccess.finalmsg' ), 1000 );
                 // The timeout simply avoids showing two messages at the same time:
                 // 1. "added to queue"
                 // 2. "successfully submitted"
-                setTimeout( records.uploadQueue, 10 * 1000 );
+                setTimeout( records.uploadQueue, 1000 );
             }
         } )
         .catch( function( error ) {
@@ -524,7 +524,7 @@ function _setEventHandlers() {
         gui.feedback( t( 'alert.queuesubmissionsuccess.msg', {
             count: successes.length,
             recordNames: successes.join( ', ' )
-        } ), 7 );
+        } ) + '<br/>' + settings.customThankYouMessage || '', 1000 );
     } );
 
     if ( settings.draftEnabled !== false ) {

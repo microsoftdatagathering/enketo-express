@@ -141,15 +141,12 @@ feedbackBar = {
 
         duration = ( duration ) ? duration * 1000 : 10 * 1000;
 
-        // max 2 messages displayed
+        // max 1 messages displayed
         $fbBar.addClass( 'feedback-bar--show' )
-            .find( 'p' ).eq( 1 ).remove();
+            .find( 'p' ).remove();
 
-        // if an already shown message isn't exactly the same
-        if ( $fbBar.find( 'p' ).html() !== message ) {
-            $msg = $( '<p></p>' ).append( message );
-            $fbBar.prepend( $msg );
-        }
+        $msg = $( '<p></p>' ).append( message );
+        $fbBar.prepend( $msg );
 
         // automatically remove feedback after a period
         setTimeout( function() {
@@ -176,11 +173,7 @@ feedbackBar = {
  * @param {number=} duration duration in seconds for the message to show
  */
 function feedback( message, duration ) {
-    if ( !support.touch ) {
-        feedbackBar.show( message, duration );
-    } else {
-        alert( message, t( 'feedback.header' ), 'info', duration );
-    }
+    feedbackBar.show( message, duration );
 }
 
 /**

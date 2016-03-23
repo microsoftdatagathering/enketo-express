@@ -75,7 +75,7 @@
       "posButton": "Show options"
     },
     "queuesubmissionsuccess": {
-      "msg": "__recordNames__ was successfully submitted",
+      "msg": "__recordNames__ was successfully submitted. You can close survey now",
       "msg_plural": "__recordNames__ were successfully submitted"
     },
     "recordloadsuccess": {
