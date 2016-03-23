@@ -1,0 +1,134 @@
+// variables, in the right order
+@import "variables";
+@import "../component/variables";
+@import "../../../../node_modules/enketo-core/src/sass/formhub/variables";
+@import "../../../../node_modules/enketo-core/src/sass/core/variables";
+
+// fonts
+@import "../component/fonts";
+
+// mixins, in the right order
+@import "../../../../node_modules/enketo-core/src/sass/core/mixins";
+@import "../../../../node_modules/enketo-core/src/sass/formhub/mixins";
+@import "../component/mixins";
+
+// reset
+@import "../../../../node_modules/enketo-core/src/sass/core/reset";
+
+// common styles
+@import "../component/common";
+
+// utilities
+@import "../../../../node_modules/enketo-core/src/sass/core/utilities";
+
+// icons
+@import "../component/icons";
+
+// buttons
+@import "../component/buttons";
+
+// layout
+@import "../../../../node_modules/enketo-core/src/sass/core/layout";
+@import "../../../../node_modules/enketo-core/src/sass/core/pages";
+
+// components
+@import "../component/side-slider";
+@import "../theme-formhub/form_formhub";
+@import "../component/form_header";
+@import "../component/form_footer";
+
+// ie patch
+@import "../component/iefix";
+
+.form-progress {
+    background-color: $brand-primary-color;
+}
+
+.offline-enabled {
+    .offline-enabled__icon {
+        background-color: $brand-primary-color;
+        color: white;
+
+        &:after {
+            content: "";
+            font-family: 'FontAwesome';
+        }
+        
+        line-height: 30px;
+        text-align: center;
+        background-image: none;
+        font-size: 25px;
+        opacity: 1;
+        @include transition-slow(opacity, 3s);
+        &.not-enabled {
+            height: 0;
+            opacity: 0;
+            width: 0;
+            background: none;
+        }
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .offline-enabled__queue-length {
+        color: $brand-primary-color;
+    }
+}
+
+/* IE11 magic
+.main {
+    display: block;
+    .paper form {
+        flex: auto;
+    }
+}
+*/
+
+/* BIG LOGOS */
+.main {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    .branding img {
+        max-height: 100px;
+        max-width: 100%;
+    }
+    header {
+        position: static;
+    }
+    .paper {
+        padding-top: 45px !important;
+    }
+}
+
+.enketo-power {
+    display: none;
+}
+
+input[readonly] {
+    display: none !important;
+}
+
+/* Hide printing button */
+.form-header__button--print {
+    display: none;
+}
+
+/* Hide star */
+.form-header__button--homescreen.btn-icon-only {
+    display: none;
+}
+
+.or > h4, .or-group > h4 {
+    text-align: left;
+}
+
+@media screen and (max-width: 820px) {
+    .offline-enabled {
+        position: absolute;
+    }
+}
+
+aside.side-slider {
+    position: fixed;
+}
